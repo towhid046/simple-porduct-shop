@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Batch 8 Assignment-5</title>
+    <!-- daisy ui an tailwind css link -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@4.7.2/dist/full.min.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- custom css -->
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap");
+
+      .font-poppins {
+        font-family: "Poppins", sans-serif;
+      }
+    </style>
+  </head>
+  <body class="font-poppins">
+    <header class="container mx-auto">
+      <div class="hero min-h-screen">
+        <div class="hero-content flex-col lg:flex-row gap-12">
+          <div class="space-y-4">
+            <p class="py-6 text-2xl font-semibold">---Sale fever---</p>
+            <h1 class="text-5xl font-bold">
+              Purchase $ 200 <br> or above & get 20% off
+            </h1>
+
+            <p class="text-2xl font-semibold">
+              User Promo Code: <span class="text-red-700">SALE200</span>
+            </p>
+          </div>
+          <img src="/images/hero.JPG" class="max-w-sm rounded-lg shadow-2xl" />
+        </div>
+      </div>
+    </header>
+
+    <main class="container mx-auto px-6">
+      <h2 class="text-4xl font-bold mb-4 text-gray-400 uppercase">
+        All Products
+      </h2>
+      <section class="flex flex-col lg:flex-row justify-between gap-6">
+        <!-- cards -->
+        <div
+          id="cards"
+          class="cards grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+        ></div>
+        <aside class="lg:w-8/12 flex justify-center">
+          <div class="w-full">
+            <p class="text-2xl mb-4 font-semibold">Have coupn?</p>
+          <div class="mb-5 space-y-4">
+            <div class="join w-full">
+              <input
+              id="discount-input-fild"
+                class="input w-full input-bordered join-item bg-black text-white"
+                placeholder="Copun"
+              />
+              <button id="apply-discount-btn" class="btn btn-error join-item rounded-lg">Apply</button>
+            </div>
+            <ol id="items" class="space-y-1 list-decimal list-inside"></ol>
+          </div>
+          <hr />
+          <div class="my-5 space-y-3">
+            <p class="text-lg font-medium text-gray-700">
+              Total Price: <span id="total-price">0</span>$
+            </p>
+            <p class="text-lg font-medium text-gray-700">
+              Discount: <span id="discount-price">0</span>$
+            </p>
+            <p class="text-lg font-medium text-gray-700">
+              Total: <span id="total">0</span>$
+            </p>
+          </div>
+          <hr class="mb-4" />
+          <button class="btn btn-error w-full">Make Purchase</button>
+          </div>
+        </aside>
+      </section>
+    </main>
+
+    <footer></footer>
+
+    <!-- script js -->
+    <script src="/script/cards.js"></script>
+    <script src="/script/main.js"></script>
+  </body>
+</html>
