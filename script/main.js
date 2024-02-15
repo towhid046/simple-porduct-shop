@@ -47,10 +47,8 @@ function addItem(productTitle) {
   ul.appendChild(li);
 }
 
-// add event listener to apply discount button:
-const applyDiscountBtn = document.getElementById("apply-discount-btn");
-
-applyDiscountBtn.addEventListener("click", function () {
+// apply button event handelar function:
+function applyButtonClickHandelar() {
   // get input fild value"
   const inputElement = document.getElementById("discount-input-fild");
   const inputValue = inputElement.value;
@@ -59,7 +57,6 @@ applyDiscountBtn.addEventListener("click", function () {
   const currentTotalPrice = getInnerValueById("total-price");
 
   if (inputValue === "SALE200" && currentTotalPrice > 200) {
-
     // calculate discount price:
     const discount = (currentTotalPrice * 20) / 100;
 
@@ -77,6 +74,10 @@ applyDiscountBtn.addEventListener("click", function () {
     alert("Invalid Copun");
   }
 
-// clear the copun input fild:
+  // clear the copun input fild:
   inputElement.value = "";
-});
+}
+
+// add event listener to apply discount button:
+const applyDiscountBtn = document.getElementById("apply-discount-btn");
+applyDiscountBtn.addEventListener("click", applyButtonClickHandelar);
