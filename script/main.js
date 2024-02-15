@@ -58,7 +58,7 @@ applyDiscountBtn.addEventListener("click", function () {
   //  get total current price
   const currentTotalPrice = getInnerValueById("total-price");
 
-  if (inputValue === "SALE200" && currentTotalPrice > 10) {
+  if (inputValue === "SALE200" && currentTotalPrice > 200) {
 
     // calculate discount price:
     const discount = (currentTotalPrice * 20) / 100;
@@ -71,7 +71,7 @@ applyDiscountBtn.addEventListener("click", function () {
 
     // user get an alert after getting discount:
     setTimeout(() => {
-      alert(`Congratulation you have got ${discount} $ discount!!`);
+      alert(`Congratulation! you have save ${discount.toFixed(2)}$!!`);
     }, 200);
   } else {
     alert("Invalid Copun");
