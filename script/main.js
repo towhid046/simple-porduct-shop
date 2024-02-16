@@ -32,16 +32,16 @@ function getInnerTextByElementMatchTagName(elements, tagNam) {
   return result;
 }
 
-function updateDiscountAfterApplyedCoupn(currentTotalPrice){
+function updateDiscountAfterApplyedCoupn(currentTotalPrice) {
   const discountedPrice = (currentTotalPrice * 20) / 100;
-  const currentDiscount = getInnerValueById('discount-price');
-  if(currentDiscount > 0){
-    setInnerValueById('discount-price', discountedPrice)
+  const currentDiscount = getInnerValueById("discount-price");
+  if (currentDiscount > 0) {
+    setInnerValueById("discount-price", discountedPrice);
   }
 }
 
 // ----------------------------------------
-const allCards = document.querySelectorAll(".card");
+const allCards = document.querySelectorAll(".add-button");
 for (let card of allCards) {
   // get all children of the card:
   const cardChildren = card.parentElement.children;
@@ -133,7 +133,7 @@ function removeToCartClickHandelar(card, productTitle, productPrice) {
   }, 200);
 
   // update discount after removing an item from list:
-  updateDiscountAfterApplyedCoupn(currentTotalPrice)
+  updateDiscountAfterApplyedCoupn(currentTotalPrice);
 }
 
 // apply button event handelar function:

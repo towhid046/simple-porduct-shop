@@ -59,7 +59,7 @@ const products = [
   const cardsContainer = document.getElementById("cards");
   products.map((product) => {
     cardsContainer.innerHTML += `
-      <div class="bg-base-100 shadow-xl">
+      <div class="card bg-base-100 shadow-xl">
       <figure class="px-10 pt-10">
         <img
           src=${product.image}
@@ -77,7 +77,7 @@ const products = [
             </div>
         <h2 class="card-title">${product.title}</h2>
         <p>$ <span class='product-price' id=${product.id}>${product.price}</span></p>
-        <button class='card btn btn-error rounded-lg w-full hover:text-white'>Add to Cart</button>
+        <button class='add-button btn btn-error rounded-lg w-full hover:text-white'>Add to Cart</button>
       </div>
     </div>   
   `;
