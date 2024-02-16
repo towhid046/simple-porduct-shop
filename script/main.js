@@ -6,6 +6,7 @@ function getInnerValueById(elementId) {
 function getInnerTextById(elementId) {
   return document.getElementById(elementId).innerText;
 }
+
 function setInnerValueById(elementId, value) {
   const element = document.getElementById(elementId);
   element.innerText = value.toFixed(2);
@@ -21,40 +22,35 @@ function getProductTitle(elementId) {
   console.log(element);
 }
 
-// ----------------------------------------
+function getInnerTextByElementMatchTagName(elements, tagNam) {
+  let result = "";
+  for (let element of elements) {
+    if (element.tagName === tagNam) {
+      result = element.innerText;
+    }
+  }
+  return result;
+}
 
+// ----------------------------------------
 const allCards = document.querySelectorAll(".card");
 for (let card of allCards) {
-
-  // get targeted product title:
-  // const productTitle = card.parentElement.children[1].innerText;
-
   // get all children of the card:
   const cardChildren = card.parentElement.children;
 
   // get targeted product title:
-  let productTitle = "";
+  let productTitle = getInnerTextByElementMatchTagName(cardChildren, 'H2')
+
+  // get prices 
   let prices = undefined;
   for (let element of cardChildren) {
-    if (element.tagName === "H2") {
-      productTitle = element.innerText;
-    } else if (element.tagName === "P") {
+    if (element.tagName === "P") {
       prices = element.children;
     }
   }
 
   // get targeted product price:
-  let productPrice = 0;
-  for (let price of prices) {
-    if (price.tagName === "SPAN") {
-      productPrice = parseFloat(price.innerText);
-    }
-  }
-
-  // get targeted product price
-  // const productPrice = parseFloat(
-  //   card.parentElement.children[2].children[0].innerText
-  // );
+  let productPrice = parseFloat(getInnerTextByElementMatchTagName(prices, 'SPAN'));
 
   // added event listener to card button: mainly the card is the calss of card buttons;
   card.addEventListener("click", function () {
