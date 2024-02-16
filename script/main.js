@@ -30,12 +30,12 @@ for (let card of allCards) {
   // added event listener to card button: mainly the card is the calss of card buttons;
   card.addEventListener("click", function () {
     card.innerText === "Add to Cart"
-      ? cardOperationMaker(card, productTitle, productPrice)
-      : removeFromCart(card, productTitle, productPrice);
+      ? addToCartClickHandelar(card, productTitle, productPrice)
+      : removeToCartClickHandelar(card, productTitle, productPrice);
   });
 }
 
-function cardOperationMaker(card, productTitle, productPrice) {
+function addToCartClickHandelar(card, productTitle, productPrice) {
   // Add an item to the porduct list:
   addItem(productTitle);
 
@@ -58,12 +58,14 @@ function addItem(productTitle) {
   li.innerText = productTitle;
   const ul = document.getElementById("items");
   ul.appendChild(li);
+
+  // show an alert after adding an item to the cart
   setTimeout(() => {
     alert("Added to Cart");
   }, 200);
 }
 
-function removeFromCart(card, productTitle, productPrice) {
+function removeToCartClickHandelar(card, productTitle, productPrice) {
   // get current total price:
   const currentTotalPrice = getInnerValueById("total-price") - productPrice;
 
@@ -95,7 +97,7 @@ function removeFromCart(card, productTitle, productPrice) {
 }
 
 // apply button event handelar function:
-function applyButtonClickHandelar() {
+function applyDiscountButtonClickHandelar() {
   // get input fild value"
   const inputElement = document.getElementById("discount-input-fild");
   const inputValue = inputElement.value;
@@ -127,4 +129,4 @@ function applyButtonClickHandelar() {
 
 // add event listener to apply discount button:
 const applyDiscountBtn = document.getElementById("apply-discount-btn");
-applyDiscountBtn.addEventListener("click", applyButtonClickHandelar);
+applyDiscountBtn.addEventListener("click", applyDiscountButtonClickHandelar);
