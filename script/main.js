@@ -14,27 +14,30 @@ function setInnerValueById(elementId, value) {
 function setTextAndColorByElement(element, text, color) {
   element.style.color = color;
   element.innerText = text;
-};
+}
 
 // ----------------------------------------
 const allCards = document.querySelectorAll(".card");
 for (let card of allCards) {
-  card.addEventListener("click", function () {
-    card.innerText === "Add to Cart"
-      ? cardOperationMaker(card)
-      : removeFromCart(card);
-  });
-}
-
-function cardOperationMaker(card) {
   // get the product title and disply it:
   const productTitle = card.parentElement.children[1].innerText;
-  addItem(productTitle);
 
   // get targeted product price:
   const productPrice = parseFloat(
     card.parentElement.children[2].children[0].innerText
   );
+
+  // added event listener to card button: mainly the card is the calss of card buttons;
+  card.addEventListener("click", function () {
+    card.innerText === "Add to Cart"
+      ? cardOperationMaker(card, productTitle, productPrice)
+      : removeFromCart(card, productTitle, productPrice);
+  });
+}
+
+function cardOperationMaker(card, productTitle, productPrice) {
+  // Add an item to the porduct list:
+  addItem(productTitle);
 
   // get current total price:
   let currentTotalPrice = getInnerValueById("total-price");
@@ -60,24 +63,23 @@ function addItem(productTitle) {
   }, 200);
 }
 
-function removeFromCart(card) {
-  // get card title:
-  const productTitle = card.parentElement.children[1].innerText;
-  
-  // get product price:
-  const productPrice = parseFloat(
-    card.parentElement.children[2].children[0].innerText
-  );
-
-  // Set update total and total price and change text and color of add button:
+function removeFromCart(card, productTitle, productPrice) {
+  // get current total price:
   const currentTotalPrice = getInnerValueById("total-price") - productPrice;
+
+  // set total price:
   setInnerValueById("total-price", currentTotalPrice);
+
+  // set total:
   setInnerValueById("total", currentTotalPrice);
+
+  // change button text and color:
   setTextAndColorByElement(card, "Add to Cart", "black");
 
-  // Added hiddend if the product title is match
+  // Added hidden if the product title is match
   let allList = document.getElementById("items");
   allList = [allList.children];
+
   for (let i = 0; i < allList.length; i++) {
     const items = allList[i];
     for (let item of items) {
@@ -87,9 +89,9 @@ function removeFromCart(card) {
     }
   }
 
-  setTimeout(()=>{
-    alert('Removed from Cart')
-  }, 200)
+  setTimeout(() => {
+    alert("Removed from Cart");
+  }, 200);
 }
 
 // apply button event handelar function:
