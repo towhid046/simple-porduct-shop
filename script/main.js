@@ -20,14 +20,13 @@ for (let card of allCards) {
 }
 
 function cardOperationMaker(card) {
+
   // get the product title and disply it:
-  const productTitle = card.children[1].children[1].innerHTML;
+  const productTitle = card.parentElement.children[1].innerText;
   addItem(productTitle);
 
   // get targeted product price:
-  const productPrice = parseFloat(
-    card.children[1].children[2].children[0].innerHTML
-  );
+  const productPrice = parseFloat(card.parentElement.children[2].children[0].innerText);
 
   // get current total price:
   let currentTotalPrice = getInnerValueById("total-price");
@@ -38,6 +37,10 @@ function cardOperationMaker(card) {
 
   // set total
   setInnerValueById("total", currentTotalPrice);
+
+  // get current inner text of add to cart button:
+  card.style.color = "white";
+  card.innerText = "Remove from Cart";
 }
 
 function addItem(productTitle) {
@@ -45,7 +48,11 @@ function addItem(productTitle) {
   li.innerText = productTitle;
   const ul = document.getElementById("items");
   ul.appendChild(li);
+  setTimeout(()=>{
+    alert('Added to the Cart list')
+  }, 200)
 }
+
 
 // apply button event handelar function:
 function applyButtonClickHandelar() {
