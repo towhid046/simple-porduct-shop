@@ -32,6 +32,14 @@ function getInnerTextByElementMatchTagName(elements, tagNam) {
   return result;
 }
 
+function updateDiscountAfterApplyedCoupn(currentTotalPrice){
+  const discountedPrice = (currentTotalPrice * 20) / 100;
+  const currentDiscount = getInnerValueById('discount-price');
+  if(currentDiscount > 0){
+    setInnerValueById('discount-price', discountedPrice)
+  }
+}
+
 // ----------------------------------------
 const allCards = document.querySelectorAll(".card");
 for (let card of allCards) {
@@ -39,9 +47,9 @@ for (let card of allCards) {
   const cardChildren = card.parentElement.children;
 
   // get targeted product title:
-  let productTitle = getInnerTextByElementMatchTagName(cardChildren, 'H2')
+  let productTitle = getInnerTextByElementMatchTagName(cardChildren, "H2");
 
-  // get prices 
+  // get prices
   let prices = undefined;
   for (let element of cardChildren) {
     if (element.tagName === "P") {
@@ -50,7 +58,9 @@ for (let card of allCards) {
   }
 
   // get targeted product price:
-  let productPrice = parseFloat(getInnerTextByElementMatchTagName(prices, 'SPAN'));
+  let productPrice = parseFloat(
+    getInnerTextByElementMatchTagName(prices, "SPAN")
+  );
 
   // added event listener to card button: mainly the card is the calss of card buttons;
   card.addEventListener("click", function () {
@@ -76,6 +86,9 @@ function addToCartClickHandelar(card, productTitle, productPrice) {
 
   // set text and color:
   setTextAndColorByElement(card, "Remove from Cart", "white");
+
+  // update discount if the copun have been applyed(that means user can add new product after applyed the discount coupn):
+  updateDiscountAfterApplyedCoupn(currentTotalPrice);
 }
 
 function addItem(productTitle) {
@@ -115,10 +128,12 @@ function removeToCartClickHandelar(card, productTitle, productPrice) {
       }
     }
   }
-
   setTimeout(() => {
     alert("Removed from Cart");
   }, 200);
+
+  // update discount after removing an item from list:
+  updateDiscountAfterApplyedCoupn(currentTotalPrice)
 }
 
 // apply button event handelar function:
