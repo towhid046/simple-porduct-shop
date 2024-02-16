@@ -16,16 +16,45 @@ function setTextAndColorByElement(element, text, color) {
   element.innerText = text;
 }
 
+function getProductTitle(elementId) {
+  const element = document.getElementById(elementId);
+  console.log(element);
+}
+
 // ----------------------------------------
+
 const allCards = document.querySelectorAll(".card");
 for (let card of allCards) {
-  // get the product title and disply it:
-  const productTitle = card.parentElement.children[1].innerText;
+
+  // get targeted product title:
+  // const productTitle = card.parentElement.children[1].innerText;
+
+  // get all children of the card:
+  const cardChildren = card.parentElement.children;
+
+  // get targeted product title:
+  let productTitle = "";
+  let prices = undefined;
+  for (let element of cardChildren) {
+    if (element.tagName === "H2") {
+      productTitle = element.innerText;
+    } else if (element.tagName === "P") {
+      prices = element.children;
+    }
+  }
 
   // get targeted product price:
-  const productPrice = parseFloat(
-    card.parentElement.children[2].children[0].innerText
-  );
+  let productPrice = 0;
+  for (let price of prices) {
+    if (price.tagName === "SPAN") {
+      productPrice = parseFloat(price.innerText);
+    }
+  }
+
+  // get targeted product price
+  // const productPrice = parseFloat(
+  //   card.parentElement.children[2].children[0].innerText
+  // );
 
   // added event listener to card button: mainly the card is the calss of card buttons;
   card.addEventListener("click", function () {

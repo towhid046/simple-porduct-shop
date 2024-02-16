@@ -51,7 +51,7 @@ const products = [
     id: 9,
     image: "https://media.trekbikes.com/image/upload/w_800,h_600,c_pad,f_auto,fl_progressive:semi,q_auto/EmondaSL6_23_36958_B_Primary",
     title: "Commuter Bike",
-    price: 499.99
+    price: 899.99
   }
 ];
 
