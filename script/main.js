@@ -11,22 +11,30 @@ function setInnerValueById(elementId, value) {
   element.innerText = value.toFixed(2);
 }
 
+function setTextAndColorByElement(element, text, color) {
+  element.style.color = color;
+  element.innerText = text;
+};
+
 // ----------------------------------------
 const allCards = document.querySelectorAll(".card");
 for (let card of allCards) {
   card.addEventListener("click", function () {
-    cardOperationMaker(card);
+    card.innerText === "Add to Cart"
+      ? cardOperationMaker(card)
+      : removeFromCart(card);
   });
 }
 
 function cardOperationMaker(card) {
-
   // get the product title and disply it:
   const productTitle = card.parentElement.children[1].innerText;
   addItem(productTitle);
 
   // get targeted product price:
-  const productPrice = parseFloat(card.parentElement.children[2].children[0].innerText);
+  const productPrice = parseFloat(
+    card.parentElement.children[2].children[0].innerText
+  );
 
   // get current total price:
   let currentTotalPrice = getInnerValueById("total-price");
@@ -38,9 +46,8 @@ function cardOperationMaker(card) {
   // set total
   setInnerValueById("total", currentTotalPrice);
 
-  // get current inner text of add to cart button:
-  card.style.color = "white";
-  card.innerText = "Remove from Cart";
+  // set text and color:
+  setTextAndColorByElement(card, "Remove from Cart", "white");
 }
 
 function addItem(productTitle) {
@@ -48,11 +55,42 @@ function addItem(productTitle) {
   li.innerText = productTitle;
   const ul = document.getElementById("items");
   ul.appendChild(li);
-  setTimeout(()=>{
-    alert('Added to the Cart list')
-  }, 200)
+  setTimeout(() => {
+    alert("Added to Cart");
+  }, 200);
 }
 
+function removeFromCart(card) {
+  // get card title:
+  const productTitle = card.parentElement.children[1].innerText;
+  
+  // get product price:
+  const productPrice = parseFloat(
+    card.parentElement.children[2].children[0].innerText
+  );
+
+  // Set update total and total price and change text and color of add button:
+  const currentTotalPrice = getInnerValueById("total-price") - productPrice;
+  setInnerValueById("total-price", currentTotalPrice);
+  setInnerValueById("total", currentTotalPrice);
+  setTextAndColorByElement(card, "Add to Cart", "black");
+
+  // Added hiddend if the product title is match
+  let allList = document.getElementById("items");
+  allList = [allList.children];
+  for (let i = 0; i < allList.length; i++) {
+    const items = allList[i];
+    for (let item of items) {
+      if (productTitle === item.innerText) {
+        item.setAttribute("class", "hidden");
+      }
+    }
+  }
+
+  setTimeout(()=>{
+    alert('Removed from Cart')
+  }, 200)
+}
 
 // apply button event handelar function:
 function applyButtonClickHandelar() {
