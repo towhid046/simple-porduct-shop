@@ -76,7 +76,7 @@ const products = [
               <input type="radio" name="rating-2" class="mask mask-star-2 bg-orange-400" />
             </div>
         <h2 class="card-title">${product.title}</h2>
-        <p>$ <span class='product-price' id=${product.id}>${product.price}</span></p>
+        <p>$ ${product.price}</p>
         <button class='add-button btn btn-error rounded-lg w-full hover:text-white'>Add to Cart</button>
       </div>
     </div>   

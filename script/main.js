@@ -49,19 +49,11 @@ for (let cardBtn of allcardBtns) {
   // get targeted product title:
   let productTitle = getInnerTextByElementMatchTagName(cardBtnChildren, "H2");
 
-  // get prices
-  let prices = undefined;
-  for (let element of cardBtnChildren) {
-    if (element.tagName === "P") {
-      prices = element.children;
-    }
-  }
-
   // get targeted product price:
   let productPrice = parseFloat(
-    getInnerTextByElementMatchTagName(prices, "SPAN")
+    getInnerTextByElementMatchTagName(cardBtnChildren, "P").split(' ')[1]
   );
-
+  
   // added event listener to cardBtn button: mainly the cardBtn is the calss of card buttons;
   cardBtn.addEventListener("click", function () {
     cardBtn.innerText === "Add to Cart"
