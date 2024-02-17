@@ -109,15 +109,15 @@ const furnitures = [
   },
   {
     id: 8,
-    image: "https://m.media-amazon.com/images/I/81yAea765YL._AC_UL320_.jpg",
-    title: "Desk",
-    price: 179.99,
-  },
-  {
-    id: 9,
     image: "https://m.media-amazon.com/images/I/71Sx8jN8pPL._AC_UL320_.jpg",
     title: "Dresser",
     price: 399.99,
+  },
+  {
+    id: 9,
+    image: "https://m.media-amazon.com/images/I/71HTpJpD3tL._AC_UL320_.jpg",
+    title: "Deak Venture",
+    price: 599.99,
   },
 ];
 

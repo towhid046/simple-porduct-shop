@@ -12,6 +12,11 @@ function setInnerValueById(elementId, value) {
   element.innerText = value.toFixed(2);
 }
 
+function setInnerTextById(elementId, value){
+  const element = document.getElementById(elementId);
+  element.innerText = value;
+}
+
 function setTextAndColorByElement(element, text, color) {
   element.style.color = color;
   element.innerText = text;
@@ -75,6 +80,7 @@ function addToCartClickHandelar(cardBtn, productTitle, productPrice) {
 
   // set total
   setInnerValueById("total", currentTotalPrice);
+  setInnerValueById("nav-subtotal", currentTotalPrice);
 
   // set text and color:
   setTextAndColorByElement(cardBtn, "Remove from Cart", "white");
@@ -90,42 +96,14 @@ function addItem(productTitle) {
   ul.appendChild(li);
 
   // show an alert after adding an item to the cart
-  setTimeout(() => {
-    alert("Added to Cart");
-  }, 200);
-}
+  // setTimeout(() => {
+  //   alert("Added to Cart");
+  // }, 200);
 
-function removeToCartClickHandelar(cardBtn, productTitle, productPrice) {
-  // get current total price:
-  const currentTotalPrice = getInnerValueById("total-price") - productPrice;
-
-  // set total price:
-  setInnerValueById("total-price", currentTotalPrice);
-
-  // set total:
-  setInnerValueById("total", currentTotalPrice);
-
-  // change button text and color:
-  setTextAndColorByElement(cardBtn, "Add to Cart", "black");
-
-  // Added hidden if the product title is match
-  let allList = document.getElementById("items");
-  allList = [allList.children];
-
-  for (let i = 0; i < allList.length; i++) {
-    const items = allList[i];
-    for (let item of items) {
-      if (productTitle === item.innerText) {
-        item.setAttribute("class", "hidden");
-      }
-    }
-  }
-  setTimeout(() => {
-    alert("Removed from Cart");
-  }, 200);
-
-  // update discount after removing an item from list:
-  updateDiscountAfterApplyedCoupn(currentTotalPrice);
+  // add item count fo nav bar cart icon:
+  const itemCounter = parseInt(getInnerTextById('item-counter'))
+  setInnerTextById('item-counter', (itemCounter + 1))
+  setInnerTextById('total-items', (itemCounter + 1))
 }
 
 // apply button event handelar function:
@@ -146,6 +124,7 @@ function applyDiscountButtonClickHandelar() {
 
     // set total after discount:
     setInnerValueById("total", currentTotalPrice - discount);
+    setInnerValueById("nav-subtotal", currentTotalPrice - discount);
 
     // user get an alert after getting discount:
     setTimeout(() => {
@@ -162,3 +141,43 @@ function applyDiscountButtonClickHandelar() {
 // add event listener to apply discount button:
 const applyDiscountBtn = document.getElementById("apply-discount-btn");
 applyDiscountBtn.addEventListener("click", applyDiscountButtonClickHandelar);
+
+function removeToCartClickHandelar(cardBtn, productTitle, productPrice) {
+  // get current total price:
+  const currentTotalPrice = getInnerValueById("total-price") - productPrice;
+
+  // set total price:
+  setInnerValueById("total-price", currentTotalPrice);
+
+  // set total:
+  setInnerValueById("total", currentTotalPrice);
+  setInnerValueById("nav-subtotal", currentTotalPrice);
+
+  // change button text and color:
+  setTextAndColorByElement(cardBtn, "Add to Cart", "black");
+
+  // Added hidden if the product title is match
+  let allList = document.getElementById("items");
+  allList = [allList.children];
+
+  for (let i = 0; i < allList.length; i++) {
+    const items = allList[i];
+    for (let item of items) {
+      if (productTitle === item.innerText) {
+        item.setAttribute("class", "hidden");
+      }
+    }
+  }
+
+  // setTimeout(() => {
+  //   alert("Removed from Cart");
+  // }, 200);
+
+  // update discount after removing an item from list:
+  updateDiscountAfterApplyedCoupn(currentTotalPrice);
+
+  // update the nav item counter:
+  let currentItems = parseInt(getInnerTextById('item-counter'))
+  setInnerTextById('item-counter', currentItems - 1);
+  setInnerTextById('total-items', currentItems - 1);
+}
