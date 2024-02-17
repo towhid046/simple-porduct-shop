@@ -41,17 +41,17 @@ function updateDiscountAfterApplyedCoupn(currentTotalPrice) {
 }
 
 // ----------------------------------------
-const allCards = document.querySelectorAll(".add-button");
-for (let card of allCards) {
-  // get all children of the card:
-  const cardChildren = card.parentElement.children;
+const allcardBtns = document.querySelectorAll(".add-button");
+for (let cardBtn of allcardBtns) {
+  // get all children of the cardBtnBtn:
+  const cardBtnChildren = cardBtn.parentElement.children;
 
   // get targeted product title:
-  let productTitle = getInnerTextByElementMatchTagName(cardChildren, "H2");
+  let productTitle = getInnerTextByElementMatchTagName(cardBtnChildren, "H2");
 
   // get prices
   let prices = undefined;
-  for (let element of cardChildren) {
+  for (let element of cardBtnChildren) {
     if (element.tagName === "P") {
       prices = element.children;
     }
@@ -62,15 +62,15 @@ for (let card of allCards) {
     getInnerTextByElementMatchTagName(prices, "SPAN")
   );
 
-  // added event listener to card button: mainly the card is the calss of card buttons;
-  card.addEventListener("click", function () {
-    card.innerText === "Add to Cart"
-      ? addToCartClickHandelar(card, productTitle, productPrice)
-      : removeToCartClickHandelar(card, productTitle, productPrice);
+  // added event listener to cardBtn button: mainly the cardBtn is the calss of card buttons;
+  cardBtn.addEventListener("click", function () {
+    cardBtn.innerText === "Add to Cart"
+      ? addToCartClickHandelar(cardBtn, productTitle, productPrice)
+      : removeToCartClickHandelar(cardBtn, productTitle, productPrice);
   });
 }
 
-function addToCartClickHandelar(card, productTitle, productPrice) {
+function addToCartClickHandelar(cardBtn, productTitle, productPrice) {
   // Add an item to the porduct list:
   addItem(productTitle);
 
@@ -85,7 +85,7 @@ function addToCartClickHandelar(card, productTitle, productPrice) {
   setInnerValueById("total", currentTotalPrice);
 
   // set text and color:
-  setTextAndColorByElement(card, "Remove from Cart", "white");
+  setTextAndColorByElement(cardBtn, "Remove from Cart", "white");
 
   // update discount if the copun have been applyed(that means user can add new product after applyed the discount coupn):
   updateDiscountAfterApplyedCoupn(currentTotalPrice);
@@ -103,7 +103,7 @@ function addItem(productTitle) {
   }, 200);
 }
 
-function removeToCartClickHandelar(card, productTitle, productPrice) {
+function removeToCartClickHandelar(cardBtn, productTitle, productPrice) {
   // get current total price:
   const currentTotalPrice = getInnerValueById("total-price") - productPrice;
 
@@ -114,7 +114,7 @@ function removeToCartClickHandelar(card, productTitle, productPrice) {
   setInnerValueById("total", currentTotalPrice);
 
   // change button text and color:
-  setTextAndColorByElement(card, "Add to Cart", "black");
+  setTextAndColorByElement(cardBtn, "Add to Cart", "black");
 
   // Added hidden if the product title is match
   let allList = document.getElementById("items");
