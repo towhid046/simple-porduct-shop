@@ -12,7 +12,7 @@ function setInnerValueById(elementId, value) {
   element.innerText = value.toFixed(2);
 }
 
-function setInnerTextById(elementId, value){
+function setInnerTextById(elementId, value) {
   const element = document.getElementById(elementId);
   element.innerText = value;
 }
@@ -56,7 +56,7 @@ for (let cardBtn of allcardBtns) {
 
   // get targeted product price:
   let productPrice = parseFloat(
-    getInnerTextByElementMatchTagName(cardBtnChildren, "P").split(' ')[1]
+    getInnerTextByElementMatchTagName(cardBtnChildren, "P").split(" ")[1]
   );
 
   // added event listener to cardBtn button: mainly the cardBtn is the calss of card buttons;
@@ -101,9 +101,9 @@ function addItem(productTitle) {
   // }, 200);
 
   // add item count fo nav bar cart icon:
-  const itemCounter = parseInt(getInnerTextById('item-counter'))
-  setInnerTextById('item-counter', (itemCounter + 1))
-  setInnerTextById('total-items', (itemCounter + 1))
+  const itemCounter = parseInt(getInnerTextById("item-counter"));
+  setInnerTextById("item-counter", itemCounter + 1);
+  setInnerTextById("total-items", itemCounter + 1);
 }
 
 // apply button event handelar function:
@@ -114,7 +114,7 @@ function applyDiscountButtonClickHandelar() {
 
   //  get total current price
   const currentTotalPrice = getInnerValueById("total-price");
-  const discountCode = getInnerTextById('copun-code');
+  const discountCode = getInnerTextById("copun-code");
   if (inputValue === discountCode && currentTotalPrice > 200) {
     // calculate discount price:
     const discount = (currentTotalPrice * 20) / 100;
@@ -177,16 +177,19 @@ function removeToCartClickHandelar(cardBtn, productTitle, productPrice) {
   updateDiscountAfterApplyedCoupn(currentTotalPrice);
 
   // update the nav item counter:
-  let currentItems = parseInt(getInnerTextById('item-counter'))
-  setInnerTextById('item-counter', currentItems - 1);
-  setInnerTextById('total-items', currentItems - 1);
+  let currentItems = parseInt(getInnerTextById("item-counter"));
+  setInnerTextById("item-counter", currentItems - 1);
+  setInnerTextById("total-items", currentItems - 1);
 }
 
 // nav bar view cart click handelar:
-const viewCartElement = document.getElementById('nav-bar-view-cart');
-viewCartElement.addEventListener('click', function(){
-  document.getElementById('products-section').classList.add('hidden')
-  document.getElementById('hero-section').classList.add('hidden')
-  document.getElementById('view-cart-section').classList.remove('hidden')
-  document.getElementById('view-cart-section').style.marginTop = '90px'
-})
+const viewCartElement = document.getElementById("nav-bar-view-cart");
+
+viewCartElement.addEventListener("click", function () {
+  setTimeout(function () {
+    document.getElementById("products-section").classList.add("hidden");
+    document.getElementById("hero-section").classList.add("hidden");
+    document.getElementById("view-cart-section").classList.remove("hidden");
+    document.getElementById("view-cart-section").style.marginTop = "90px";
+  }, 300);
+});
