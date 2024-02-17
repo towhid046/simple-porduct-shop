@@ -46,15 +46,27 @@
     </header>
 
     <main class="container mx-auto px-6">
-      <h2 class="text-4xl font-bold mb-4 text-gray-400 uppercase">
-        All Products
-      </h2>
       <section class="flex flex-col lg:flex-row justify-between gap-6">
-        <!-- cards -->
-        <div
+        <section>
+          <!-- bicycle cards -->
+          <h2 class="text-4xl font-bold mb-4 text-gray-400 uppercase">
+            Newly Arrived Bicycles
+          </h2>
+          <div
           id="cards"
+          class="cards grid pb-20 justify-center grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+        ></div>
+
+        <h2 class="text-4xl font-bold mb-4 text-gray-400 uppercase">
+          New Furnitures
+        </h2>
+          <div
+          id="cards2"
           class="cards grid justify-center grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
         ></div>
+
+        </section>
+
         <aside class="lg:w-8/12 flex justify-center">
           <div class="w-full">
             <p class="text-2xl mb-4 font-semibold">Have coupn?</p>
