@@ -144,8 +144,8 @@ function applyDiscountButtonClickHandelar() {
 
   //  get total current price
   const currentTotalPrice = getInnerValueById("total-price");
-
-  if (inputValue === "SALE200" && currentTotalPrice > 200) {
+  const discountCode = getInnerTextById('copun-code');
+  if (inputValue === discountCode && currentTotalPrice > 200) {
     // calculate discount price:
     const discount = (currentTotalPrice * 20) / 100;
 
