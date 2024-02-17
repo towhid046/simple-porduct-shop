@@ -53,7 +53,7 @@ for (let cardBtn of allcardBtns) {
   let productPrice = parseFloat(
     getInnerTextByElementMatchTagName(cardBtnChildren, "P").split(' ')[1]
   );
-  
+
   // added event listener to cardBtn button: mainly the cardBtn is the calss of card buttons;
   cardBtn.addEventListener("click", function () {
     cardBtn.innerText === "Add to Cart"
