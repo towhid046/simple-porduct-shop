@@ -3,7 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Batch 8 Assignment-5</title>
+    <title>Bangla Shop</title>
+    <link rel="shortcut icon" href="images/hero.png" type="image/x-icon">
     <!-- daisy ui an tailwind css link -->
     <link
       href="https://cdn.jsdelivr.net/npm/daisyui@4.7.2/dist/full.min.css"
@@ -27,7 +28,7 @@
       <nav class="shadow-sm fixed top-0 w-full bg-white z-10">
         <div class="navbar bg-base-100 container mx-auto">
           <div class="flex-1">
-            <a class="btn btn-ghost text-2xl text-purple-700">BANGLA SHOP</a>
+            <a class="btn btn-ghost text-2xl text-purple-700" href="index.html">BANGLA SHOP</a>
           </div>
           <div class="flex-none">
             <div class="dropdown dropdown-end">
@@ -58,7 +59,7 @@
                   <span class="font-bold text-lg"><span id="total-items">0</span> Items</span>
                   <span class="text-info">Subtotal: $ <span id="nav-subtotal">0</span></span>
                   <div class="card-actions">
-                    <button class="btn btn-primary btn-block">View cart</button>
+                    <button id="nav-bar-view-cart" class="btn btn-primary btn-block">View cart</button>
                   </div>
                 </div>
               </div>
@@ -94,7 +95,7 @@
         </div>
       </nav>
       <!-- hero  -->
-      <div class="hero py-10">
+      <div id="hero-section" class="hero py-10">
         <div class="hero-content flex-col-reverse lg:flex-row gap-12">
           <div class="space-y-4">
             <p class="py-6 text-2xl font-semibold">---Sale fever---</p>
@@ -117,7 +118,7 @@
       </div>
     </header>
 
-    <main class="container mx-auto px-6">
+    <main id="products-section" class="container mx-auto px-6">
       <section class="flex flex-col lg:flex-row justify-between gap-6">
         <section>
           <!-- bicycle cards -->
@@ -137,71 +138,71 @@
             class="cards grid justify-center grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
           ></div>
         </section>
-
-        <aside class="lg:w-8/12 flex justify-center">
-          <div class="w-full">
-            <p class="text-2xl mb-4 font-semibold">Have coupn?</p>
-            <div class="mb-5 space-y-4">
-              <div class="join w-full">
-                <input
-                  id="discount-input-fild"
-                  class="input w-full input-bordered join-item bg-black text-white"
-                  placeholder="Copun"
-                />
-                <button
-                  id="apply-discount-btn"
-                  class="btn btn-error join-item rounded-lg"
-                >
-                  Apply
-                </button>
-              </div>
-              <ol
-                id="items"
-                class="allItems space-y-1 list-decimal list-inside"
-              ></ol>
-            </div>
-            <hr />
-            <div class="my-5 space-y-3">
-              <p class="text-lg font-medium text-gray-700">
-                Total Price: <span id="total-price">0</span>$
-              </p>
-              <p class="text-lg font-medium text-gray-700">
-                Discount: <span id="discount-price">0</span>$
-              </p>
-              <p class="text-lg font-medium text-gray-700">
-                Total: <span id="total">0</span>$
-              </p>
-            </div>
-            <hr class="mb-4" />
-            <!-- Open the modal using ID.showModal() method -->
-            <button
-              class="btn btn-error w-full text-white"
-              onclick="my_modal_1.showModal()"
-            >
-              Make Purchase
-            </button>
-            <dialog id="my_modal_1" class="modal">
-              <div class="modal-box p-10">
-                <h3 class="text-4xl text-green-500 font-poppins font-semibold">
-                  Contratulation!😍
-                </h3>
-                <p class="py-4 text-lg font-medium">
-                  You have sucessfully purchased.
-                </p>
-                <div class="modal-action">
-                  <form method="dialog">
-                    <!-- if there is a button in form, it will close the modal -->
-                    <button class="btn">Ok</button>
-                  </form>
-                </div>
-              </div>
-            </dialog>
-          </div>
-        </aside>
       </section>
     </main>
 
-    <footer></footer>
+    <footer id="view-cart-section" class="container mx-auto px-4 hidden">
+      <aside class="w-full flex justify-center">
+        <div class="w-full">
+          <p class="text-2xl mb-4 font-semibold">Have coupn?</p>
+          <div class="mb-5 space-y-4">
+            <div class="join w-full">
+              <input
+                id="discount-input-fild"
+                class="input w-full input-bordered join-item bg-black text-white"
+                placeholder="Copun"
+              />
+              <button
+                id="apply-discount-btn"
+                class="btn btn-error join-item rounded-lg"
+              >
+                Apply
+              </button>
+            </div>
+            <ol
+              id="items"
+              class="allItems space-y-1 list-decimal list-inside"
+            ></ol>
+          </div>
+          <hr />
+          <div class="my-5 space-y-3">
+            <p class="text-lg font-medium text-gray-700">
+              Total Price: <span id="total-price">0</span>$
+            </p>
+            <p class="text-lg font-medium text-gray-700">
+              Discount: <span id="discount-price">0</span>$
+            </p>
+            <p class="text-lg font-medium text-gray-700">
+              Total: <span id="total">0</span>$
+            </p>
+          </div>
+          <hr class="mb-4" />
+          <!-- Open the modal using ID.showModal() method -->
+          <button
+            class="btn btn-error w-full text-white"
+            onclick="my_modal_1.showModal()"
+          >
+            Make Purchase
+          </button>
+          <dialog id="my_modal_1" class="modal">
+            <div class="modal-box p-10">
+              <h3 class="text-4xl text-green-500 font-poppins font-semibold">
+                Contratulation!😍
+              </h3>
+              <p class="py-4 text-lg font-medium">
+                You have sucessfully purchased.
+              </p>
+              <div class="modal-action">
+                <form method="dialog">
+                  <!-- if there is a button in form, it will close the modal -->
+                  <button class="btn">Ok</button>
+                </form>
+              </div>
+            </div>
+          </dialog>
+        </div>
+      </aside>
+    </footer>
 
     <!-- script js -->
     <script src="/script/cards.js"></script>

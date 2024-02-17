@@ -181,3 +181,12 @@ function removeToCartClickHandelar(cardBtn, productTitle, productPrice) {
   setInnerTextById('item-counter', currentItems - 1);
   setInnerTextById('total-items', currentItems - 1);
 }
+
+// nav bar view cart click handelar:
+const viewCartElement = document.getElementById('nav-bar-view-cart');
+viewCartElement.addEventListener('click', function(){
+  document.getElementById('products-section').classList.add('hidden')
+  document.getElementById('hero-section').classList.add('hidden')
+  document.getElementById('view-cart-section').classList.remove('hidden')
+  document.getElementById('view-cart-section').style.marginTop = '90px'
+})
