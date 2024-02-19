@@ -208,6 +208,7 @@ themeBtn.addEventListener("click", function (event) {
 function themeController(btn, bgColor, color, cardBg, text) {
   document.body.style.backgroundColor = bgColor;
   document.body.style.color = color;
+  document.getElementById('discount-input-fild').style.backgroundColor = color;
   const cards = document.querySelectorAll(".card");
   cards.forEach((card) => {
     card.style.backgroundColor = cardBg;
