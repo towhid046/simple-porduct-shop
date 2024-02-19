@@ -193,3 +193,5 @@ viewCartElement.addEventListener("click", function () {
     document.getElementById("view-cart-section").style.marginTop = "90px";
   }, 300);
 });
+
+// dark theme light theme:
