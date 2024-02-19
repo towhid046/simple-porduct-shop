@@ -143,7 +143,7 @@ bicycles.map((product) => {
             </div>
         <h2 class="card-title">${product.title}</h2>
         <p>$ ${product.price}</p>
-        <button class='add-button btn btn-error rounded-lg w-full hover:text-white'>Add to Cart</button>
+        <button class='add-button btn btn-error rounded-lg w-full'>Add to Cart</button>
       </div>
     </div>   
   `;
@@ -171,7 +171,7 @@ furnitures.map((product) => {
             </div>
           <h2 class="card-title">${product.title}</h2>
           <p>$ ${product.price}</p>
-        <button class='add-button btn btn-error rounded-lg w-full hover:text-white'>Add to Cart</button>
+        <button class='add-button btn btn-error rounded-lg w-full'>Add to Cart</button>
       </div>
     </div>   
   `;

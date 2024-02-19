@@ -195,3 +195,28 @@ viewCartElement.addEventListener("click", function () {
 });
 
 // dark theme light theme:
+const themeController = document.getElementById("theme");
+themeController.addEventListener("click", function (event) {
+  event.preventDefault();
+
+  if (themeController.innerText === "Dark") {
+    document.body.style.backgroundColor = "black";
+    document.body.style.color = "white";
+    const cards = document.querySelectorAll(".card");
+    cards.forEach((card) => {
+      card.style.backgroundColor = "#0f172a";
+      card.style.color = "white";
+    });
+    themeController.innerText = "Light";
+
+  } else if (themeController.innerText === "Light") {
+    document.body.style.backgroundColor = "white";
+    document.body.style.color = "black";
+    const cards = document.querySelectorAll(".card");
+    cards.forEach((card) => {
+      card.style.backgroundColor = "white";
+      card.style.color = "black";
+    });
+    themeController.innerText = "Dark";
+  }
+});
