@@ -195,28 +195,23 @@ viewCartElement.addEventListener("click", function () {
 });
 
 // dark theme light theme:
-const themeController = document.getElementById("theme");
-themeController.addEventListener("click", function (event) {
+const themeBtn = document.getElementById("theme");
+themeBtn.addEventListener("click", function (event) {
   event.preventDefault();
 
-  if (themeController.innerText === "Dark") {
-    document.body.style.backgroundColor = "black";
-    document.body.style.color = "white";
-    const cards = document.querySelectorAll(".card");
-    cards.forEach((card) => {
-      card.style.backgroundColor = "#0f172a";
-      card.style.color = "white";
-    });
-    themeController.innerText = "Light";
-
-  } else if (themeController.innerText === "Light") {
-    document.body.style.backgroundColor = "white";
-    document.body.style.color = "black";
-    const cards = document.querySelectorAll(".card");
-    cards.forEach((card) => {
-      card.style.backgroundColor = "white";
-      card.style.color = "black";
-    });
-    themeController.innerText = "Dark";
-  }
+  const themeInnerText = themeBtn.innerText;
+  themeInnerText === "Dark"
+    ? themeController(themeBtn, "black", "white", "#0f172a", "Light")
+    : themeController(themeBtn, "white", "black", "#fafafa", "Dark");
 });
+
+function themeController(btn, bgColor, color, cardBg, text) {
+  document.body.style.backgroundColor = bgColor;
+  document.body.style.color = color;
+  const cards = document.querySelectorAll(".card");
+  cards.forEach((card) => {
+    card.style.backgroundColor = cardBg;
+    card.style.color = color;
+  });
+  btn.innerText = text;
+}
