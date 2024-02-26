@@ -196,23 +196,24 @@ viewCartElement.addEventListener("click", function () {
 
 // dark theme light theme:
 const themeBtn = document.getElementById("theme");
+
 themeBtn.addEventListener("click", function (event) {
   event.preventDefault();
-
-  const themeInnerText = themeBtn.innerText;
-  themeInnerText === "Dark"
-    ? themeController(themeBtn, "black", "white", "#0f172a", "Light")
-    : themeController(themeBtn, "white", "black", "#fafafa", "Dark");
+  
+  themeBtn.innerHTML === `<i class="fa-solid fa-moon" aria-hidden="true"></i>`
+    ? themeController(themeBtn, "black", "white", "#0f172a", `<i class="fa-regular text-black fa-moon"></i>`)
+    : themeController(themeBtn, "white", "black", "#fafafa", `<i class="fa-solid fa-moon"></i>`);
 });
 
 function themeController(btn, bgColor, color, cardBg, text) {
   document.body.style.backgroundColor = bgColor;
   document.body.style.color = color;
+
   document.getElementById('discount-input-fild').style.backgroundColor = color;
   const cards = document.querySelectorAll(".card");
   cards.forEach((card) => {
     card.style.backgroundColor = cardBg;
     card.style.color = color;
   });
-  btn.innerText = text;
+  btn.innerHTML = text;
 }
