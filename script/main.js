@@ -199,10 +199,9 @@ const themeBtn = document.getElementById("theme");
 
 themeBtn.addEventListener("click", function (event) {
   event.preventDefault();
-  
-  themeBtn.innerHTML === `<i class="fa-solid rounded-full p-3 bg-white fa-moon" aria-hidden="true"></i>`
-    ? themeController(themeBtn, "black", "white", "#0f172a", `<i class="fa-regular rounded-full p-3 bg-white text-black fa-moon"></i>`)
-    : themeController(themeBtn, "white", "black", "#fafafa", `<i class="fa-solid rounded-full p-3 bg-white fa-moon"></i>`);
+  themeBtn.innerHTML === `<i class="fa-solid rounded-full p-3 bg-gray-300 md:bg-white fa-moon" aria-hidden="true"></i>`
+    ? themeController(themeBtn, "black", "white", "#0f172a", `<i class="fa-regular rounded-full p-3 bg-gray-300 md:bg-white text-black fa-moon"></i>`)
+    : themeController(themeBtn, "white", "black", "#fafafa", `<i class="fa-solid rounded-full p-3 bg-gray-300 md:bg-white fa-moon"></i>`);
 });
 
 function themeController(btn, bgColor, color, cardBg, text) {
